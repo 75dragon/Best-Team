@@ -17,7 +17,7 @@ public class Main
 	
 	public Main()
 	{
-		HashMap<Country, ColorVertex<Country>> theMap;
+		HashMap<States, ColorVertex<States>> theMap;
 		fillTable(theMap);
 	}
 	
@@ -42,11 +42,11 @@ public class Main
 		return scanner;
 	}
 	
-	public void fillTable(HashMap<Country, ColorVertex<Country>> hold1)
+	public void fillTable(HashMap<States, ColorVertex<States>> hold1)
 	{
 		Scanner bob = openInputFile();
 		String hold;
-		Country holdIP = null;
+		States holdIP = null;
 		if (bob == null)
 		{
 			return;
@@ -54,7 +54,7 @@ public class Main
 		while (bob.hasNextLine())
 		{
 			hold = bob.nextLine().trim();
-			holdIP = new Country(hold);
+			holdIP = new States(hold);
 			System.out.println("Inserted into HashSC: " + holdIP.getDottedDecimal() + ", " + holdIP.getIpValue());
 			hold1.insert(holdIP);
 			System.out.println("Inserted into HashQP: " + holdIP.getDottedDecimal() + ", " + holdIP.getIpValue());
