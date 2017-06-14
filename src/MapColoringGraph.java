@@ -18,28 +18,41 @@ class ColorVertex<E> extends Vertex<E>{
 	public int getColor(){
 		return color;
 	}
+	
+	@Override
+	public void showAdjList(){
+		//add the region name and show the list in our format
+	}
 }
 
 public class MapColoringGraph<E> extends Graph<E> {
-	private HashMap<E, ColorVertex<E>> vertexSet;
+	
 	private LinkedStack<E> removedList;
-	private String countryName;
+	private String region;
 	
 	public MapColoringGraph(String name){
-		vertexSet = new HashMap<E, ColorVertex<E>>();
-		countryName = name;
+		super();
+		region = name;
 	}
 	
 	public MapColoringGraph(){
-		vertexSet = new HashMap<E, ColorVertex<E>>();
+		super();
 	}
 	
-	public void setCountryName(String name){
-		countryName = name;
+	@Override 
+	public Vertex<E> addToVertexSet(E x){
+		// instantiate a new ColorVertex instead
+		
 	}
 	
-	public String getCountryName(){
-		return countryName;
+	@Override
+	public void addEdge(E source, E dest, double cost){
+		// instantiate a new ColorVertex instead
+	}
+	
+	@Override 
+	public void addEdge(E source, E dest, int cost){
+		// instantiate a new ColorVertex instead
 	}
 	
 	@Override
