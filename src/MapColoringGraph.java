@@ -1,5 +1,6 @@
 import java.io.PrintWriter;
 import java.util.*;
+import java.util.Map.Entry;
 class ColorVertex<E> extends Vertex<E>{
 	private int color;
 	
@@ -56,8 +57,24 @@ public class MapColoringGraph<E> extends Graph<E> {
 	}
 	
 	@Override
-	public boolean remove(E start, E end){
-		
+	public boolean remove(E start, E end) {
+		Vertex<E> startVertex = vertexSet.get(start);
+		boolean removedOK = false;
+
+		if (startVertex != null) {
+			Pair<Vertex<E>, Double> endPair = startVertex.adjList.remove(end);
+			removedOK = endPair != null;
+		}
+		Vertex<E> endVertex = vertexSet.get(end);
+		if (endVertex != null) {
+			Pair<Vertex<E>, Double> startPair = endVertex.adjList.remove(start);
+			removedOK = startPair != null;
+		}
+		if (removedOK) {
+			removedList.push(start);
+			removedList.push(end);
+		}
+		return removedOK;
 	}
 	
 	public boolean assignColor(int numOfColor){
@@ -68,12 +85,39 @@ public class MapColoringGraph<E> extends Graph<E> {
 		
 	}
 	
-	public void writeTextResult(PrintWriter writer){
-		
+	public void writeTextResult(PrintWriter writer) {
+		Iterator<Entry<E, Vertex<E>>> iter;
+		iter = vertexSet.entrySet().iterator();
+		Vertex<E> v =iter.next().getValue();
+		ColorVertex<E> cv = (ColorVertex<E>)v;
+		while (iter.hasNext()) {
+			writer.print( iter.next().getValue() + " is: " + cv.getColor());
+			//printAdjList(iter.next().getValue(), writer);
+		}
+		writer.println();
 	}
 	
-	public void writeTextAdjList(PrintWriter writer){
-		
+	public void writeTextAdjList(PrintWriter writer) {
+		Iterator<Entry<E, Vertex<E>>> iter;
+		iter = vertexSet.entrySet().iterator();
+		while (iter.hasNext()) {
+			printAdjList(iter.next().getValue(), writer);
+		}
+		writer.println();
 	}
 	
+	public void printAdjList( Vertex<E> vertex, PrintWriter writer) {
+		Iterator<Entry<E, Pair<Vertex<E>, Double>>> iter;
+		Entry<E, Pair<Vertex<E>, Double>> entry;
+		Pair<Vertex<E>, Double> pair;
+		E data = vertex.getData();
+		writer.print("Adj List for " + data + ": ");
+		iter = vertex.adjList.entrySet().iterator();
+		while (iter.hasNext()) {
+			entry = iter.next();
+			pair = entry.getValue();
+			writer.print(pair.first.data + "(" + String.format("%3.1f", pair.second) + ") ");
+		}
+		writer.println();
+	}
 }
