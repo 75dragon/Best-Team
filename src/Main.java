@@ -2,10 +2,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import HW5.HashQP;
-import HW5.HashSC;
-import HW5.IpAddress;
 /**
  * 
  * @author Austin Cheng
@@ -14,13 +13,13 @@ import HW5.IpAddress;
 public class Main
 {
 	public Scanner userScanner = new Scanner(System.in);
-	
+
 	public Main()
 	{
-		HashMap<States, ColorVertex<States>> theMap;
+		HashMap<States, ColorVertex<States>> theMap = new HashMap<States, ColorVertex<States>>();
 		fillTable(theMap);
 	}
-	
+
 	public Scanner openInputFile()
 	{
 		String filename;
@@ -41,29 +40,39 @@ public class Main
 		} // end catch
 		return scanner;
 	}
-	
+
 	public void fillTable(HashMap<States, ColorVertex<States>> hold1)
 	{
+		//TODO make new Graph
 		Scanner bob = openInputFile();
 		String hold;
 		States holdIP = null;
+		String pattern = "(.+) - (.+)";
 		if (bob == null)
 		{
 			return;
 		}
+		String name = bob.nextLine().trim();
+		Pattern r = Pattern.compile(pattern);
+
 		while (bob.hasNextLine())
 		{
 			hold = bob.nextLine().trim();
-			holdIP = new States(hold);
-			System.out.println("Inserted into HashSC: " + holdIP.getDottedDecimal() + ", " + holdIP.getIpValue());
-			hold1.insert(holdIP);
-			System.out.println("Inserted into HashQP: " + holdIP.getDottedDecimal() + ", " + holdIP.getIpValue());
-			hold2.insert(holdIP);
+			// Now create matcher object.
+			Matcher m = r.matcher(hold);
+			if (m.find())
+			{
+				System.out.println("Found value: " + m.group(1));
+				System.out.println("Found value: " + m.group(2));
+			}
+			holdIP = new States(m.group(1));
+			holdIP = new States(m.group(2));
+			//TODO add the state
+			//TODO make a connection between the states
 		}
-		return holdIP;
 	}
-	
-	public static void main( String args[] )
+
+	public static void main(String args[])
 	{
 		new Main();
 	}

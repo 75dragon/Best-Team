@@ -18,30 +18,18 @@ Louisiana - Arkansaw Territory
 Louisiana - Mississippi
 Illinois - Missouri Territory
 Illinois - North West Territory
-Illinois - Indiana
 Illinois - Kentucky
-Illinois - Missouro
+Illinois - Missouri
 Mississippi - Louisiana
-Mississippi - Arkansaw
 Mississippi - Tennessee
 Mississippo - Alabama
 Tennessee - Arkansaw Territory
 Tennessee - Missouri
 Tennessee - Kentucky
-Tennessee - Virginia
-Tennessee - North Carolina
-Tennessee - Georgia
 Tennessee - Alabama
 Tennessee - Mississippi
 Kentucky - Missouri
 Kentucky - Illinois
-Kentucky - Indiana
-Kentucky - Ohio
-Kentucky - Virginia
 Kentucky - Tennesse
 Alabama - Mississuppi
 Alabama - Tennessee
-Alabama - Georgia
-Alabama - Florida
-
-

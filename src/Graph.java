@@ -72,6 +72,7 @@ class Vertex<E>
 
       System.out.print( "Adj List for " + data + ": ");
       iter = adjList.entrySet().iterator();
+      
       while( iter.hasNext() )
       {
          entry = iter.next();
