@@ -1,4 +1,4 @@
-//change
+
 import java.util.*;
 import java.util.Map.Entry;
 interface Visitor<T>
@@ -72,7 +72,6 @@ class Vertex<E>
 
       System.out.print( "Adj List for " + data + ": ");
       iter = adjList.entrySet().iterator();
-      
       while( iter.hasNext() )
       {
          entry = iter.next();
@@ -101,6 +100,7 @@ public class Graph<E>
    public void addEdge(E source, E dest, double cost)
    {
       Vertex<E> src, dst;
+      
 
       // put both source and dest into vertex list(s) if not already there
       src = addToVertexSet(source);
@@ -108,7 +108,7 @@ public class Graph<E>
 
       // add dest to source's adjacency list
       src.addToAdjList(dst, cost);
-      //dst.addToAdjList(src, cost); // ADD THIS IF UNDIRECTED GRAPH
+      dst.addToAdjList(src, cost); // ADD THIS IF UNDIRECTED GRAPH
    }
 
    public void addEdge(E source, E dest, int cost)
@@ -147,14 +147,14 @@ public class Graph<E>
 		   Pair<Vertex<E>, Double> endPair = startVertex.adjList.remove(end);
 		   removedOK = endPair!=null;
 	   }
-	   /*// Add if UNDIRECTED GRAPH:
+	  // Add if UNDIRECTED GRAPH:
 		Vertex<E> endVertex = vertexSet.get(end);
 		if( endVertex != null )
 		{
 			Pair<Vertex<E>, Double> startPair = endVertex.adjList.remove(start);
 			removedOK = startPair!=null ;
 		}
-		*/
+		
 
 	   return removedOK;
    }
