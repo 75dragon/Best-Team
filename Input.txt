@@ -1,0 +1,35 @@
+The West Side of the US in 1800's
+Missouri Territory - North West Territory
+Missouri Territory - Missouri
+Missouri Territory - Arkansaw Territory
+Arkansaw Territory - Missouri Territory
+Arkansaw Territory - Missouri
+Arkansaw Territory - Tennessee
+Arkansaw Territory - Mississippi
+Arkansaw Territory - Louisiana
+North West Territory - Missouri Territory
+North West Territory - Illinois
+Missouri - Missouri Territory
+Missouri - Illinois
+Missouri - Kentucky
+Missouri - Tennessee
+Missouri - Arkansaw Territory
+Louisiana - Arkansaw Territory
+Louisiana - Mississippi
+Illinois - Missouri Territory
+Illinois - North West Territory
+Illinois - Kentucky
+Illinois - Missouri
+Mississippi - Louisiana
+Mississippi - Tennessee
+Mississippo - Alabama
+Tennessee - Arkansaw Territory
+Tennessee - Missouri
+Tennessee - Kentucky
+Tennessee - Alabama
+Tennessee - Mississippi
+Kentucky - Missouri
+Kentucky - Illinois
+Kentucky - Tennesse
+Alabama - Mississuppi
+Alabama - Tennessee

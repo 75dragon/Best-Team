@@ -279,7 +279,7 @@ public class Driver
 	public static void colorGraph(MapColoringGraph<States> stateGraph, Scanner scanner)
 	{
 		int number;
-
+		boolean success;
 		do{
 			System.out.println("Enter the number of color you want to use: ");
 			number = scanner.nextInt();
@@ -291,12 +291,14 @@ public class Driver
 			System.out.println("Color" + (i + 1) + " : ");
 			colorList[i] = scanner.next();
 		}
-		stateGraph.assignColor(number, colorList);
-		System.out.println("Do you want to save the result? (y for yes): ");
-		if (Character.toLowerCase(scanner.next().charAt(0)) == 'y')
-		{
-			PrintWriter writer = openOutputFile();
-			stateGraph.writeTextResult(writer, colorList);
+		success = stateGraph.assignColor(number, colorList);
+		if(success){
+			System.out.println("Do you want to save the result? (y for yes): ");
+			if (Character.toLowerCase(scanner.next().charAt(0)) == 'y')
+			{
+				PrintWriter writer = openOutputFile();
+				stateGraph.writeTextResult(writer, colorList);
+			}
 		}
 	}
 

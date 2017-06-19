@@ -177,16 +177,17 @@ public class MapColoringGraph<E> extends Graph<E>
 	}
 
 	// wrote by Xiaoya Li
-	public void assignColor(int numOfColor, String[] colorStr)
+	public boolean assignColor(int numOfColor, String[] colorStr)
 	{
 		int numColored = 0;
 		Iterator<Map.Entry<E, Vertex<E>>> iter = vertexSet.entrySet().iterator();
 		if (!assignHelper(numOfColor, numColored, iter))
 		{
 			System.out.println("Solution does not exist");
-			return;
+			return false;
 		}
 		displayColorResult(colorStr);
+		return true;
 
 	}
 
