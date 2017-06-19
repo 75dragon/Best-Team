@@ -1,0 +1,15 @@
+Canada Provinces Map
+Adj List for Northwest Territories: Yukon | Nunavut | Alberta | Saskatchewan | British Colunmbia | 
+Adj List for New Brunswick: Prince Edward Island | Nova Scotia | Quebec | 
+Adj List for Manitoba: Nunavut | Saskatchewan | Ontario | 
+Adj List for Prince Edward Island: New Brunswick | Nova Scotia | Quebec | Newfoundland and Labrador | 
+Adj List for Alberta: Northwest Territories | Saskatchewan | British Colunmbia | 
+Adj List for Quebec: New Brunswick | Nunavut | Prince Edward Island | Nova Scotia | Ontario | Newfoundland and Labrador | 
+Adj List for Saskatchewan: Northwest Territories | Manitoba | Alberta | 
+Adj List for Yukon: Northwest Territories | British Colunmbia | 
+Adj List for Nunavut: Northwest Territories | Manitoba | Quebec | Ontario | 
+Adj List for Nova Scotia: New Brunswick | Prince Edward Island | Quebec | Newfoundland and Labrador | 
+Adj List for British Colunmbia: Northwest Territories | Yukon | Alberta | 
+Adj List for Ontario: Nunavut | Manitoba | Quebec | 
+Adj List for Newfoundland and Labrador: Prince Edward Island | Nova Scotia | Quebec | 
+

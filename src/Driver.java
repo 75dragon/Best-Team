@@ -22,7 +22,7 @@ public class Driver
 			if (inputReader == null)
 				return;
 
-			readInputFile(inputReader, stateGraph);
+			States lastElem = readInputFile(inputReader, stateGraph);
 			exit = 'n';
 			while (exit != 'y')
 			{
@@ -36,7 +36,7 @@ public class Driver
 				{
 					case 'a':
 						System.out.println();
-						stateGraph.showAdjTable();
+						displayGraph(scanner, stateGraph, lastElem);
 						break;
 
 					case 'b':
@@ -134,7 +134,7 @@ public class Driver
 	 * @param stateGraph
 	 *            the graph
 	 */
-	public static void readInputFile(Scanner scanner, MapColoringGraph<States> stateGraph)
+	public static States readInputFile(Scanner scanner, MapColoringGraph<States> stateGraph)
 	{
 		int brokenLines = 0;
 		String hold;
@@ -143,7 +143,7 @@ public class Driver
 		String pattern = "(.+) - (.+)";
 		if (scanner == null || scanner.hasNext() == false)
 		{
-			return;
+			return null;
 		}
 		String name = scanner.nextLine().trim();
 		stateGraph.setRegion(name);
@@ -174,6 +174,7 @@ public class Driver
 			System.out.println("Remember to use the format");
 			System.out.println("String - String");
 		}
+		return holdIP2;
 	}
 
 	/**
@@ -194,7 +195,41 @@ public class Driver
 		System.out.println("Please enter a letter for your choice: ");
 
 	}
+	
+	/**
+	 * Ask user which way to display the graph and display it.
+	 * @param scanner to read input
+	 * @param stateGraph -  the graph
+	 * @param startElem - the element to start the traversal
+	 */
 
+	public static void displayGraph(Scanner scanner, MapColoringGraph<States> stateGraph, States startElem){
+		int choice;
+		boolean repeat;
+		StatesVisitor visitor = new StatesVisitor();
+		System.out.println("Which traversal do you want to use? Enter the number of your choice. ");
+		System.out.println("1. Depth-First traversal");
+		System.out.println("2. Breadth-First traversal");
+		System.out.println("3. Show adjacency list of each vertex");
+		choice = scanner.nextInt();
+		do{
+			repeat = false;
+			switch(choice){
+			case 1:
+				stateGraph.depthFirstTraversal(startElem, visitor);
+				break;
+			case 2: 
+				stateGraph.breadthFirstTraversal(startElem, visitor);
+				break;
+			case 3:
+				stateGraph.showAdjTable();
+				break;
+			default:
+				System.out.println("Invalid input. Please enter again.");
+				repeat = true;
+			}
+		}while(repeat);
+	}
 	/**
 	 * adds an edge from 2 states the user inputs
 	 * 
