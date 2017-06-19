@@ -43,7 +43,6 @@ public class Main
 
 	public void fillTable(HashMap<States, ColorVertex<States>> hold1)
 	{
-		//TODO make new Graph
 		Scanner bob = openInputFile();
 		String hold;
 		States holdIP = null;

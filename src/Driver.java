@@ -197,7 +197,7 @@ public class Driver {
 
 	}
 	
-	/*
+	
 	public static void undoRemove(MapColoringGraph<States> stateGraph){
 		boolean remove = stateGraph.undoRemove();
 		if(remove){
@@ -207,7 +207,7 @@ public class Driver {
 		else 
 			System.out.println("\nUndo remove fail.");
 	}
-	*/
+	
 	
 	public static void colorGraph(MapColoringGraph<States> stateGraph, Scanner scanner){
 		int number;
