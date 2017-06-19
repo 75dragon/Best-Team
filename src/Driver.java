@@ -26,7 +26,7 @@ public class Driver
 			while (exit != 'y')
 			{
 
-				displayMainMenu(stateGraph);
+				displayMainMenu();
 
 				char userChoice = scanner.next().charAt(0);
 				scanner.nextLine();
@@ -156,23 +156,21 @@ public class Driver
 			{
 				System.out.println("Found value: " + m.group(1));
 				System.out.println("Found value: " + m.group(2));
-			} else
+				holdIP1 = new States(m.group(1));
+				holdIP2 = new States(m.group(2));
+				stateGraph.addEdge(holdIP1, holdIP2, 0);
+			} 
+			else
 			{
 				brokenLines++;
 			}
-
-			if (brokenLines != 0)
-			{
-				System.out.println(
-						"This input had " + brokenLines + " invalid input lines. They were not added to the list");
-				System.out.println("Remember to use the format");
-				System.out.println("String - String");
-			}
-
-			holdIP1 = new States(m.group(1));
-			holdIP2 = new States(m.group(2));
-
-			stateGraph.addEdge(holdIP1, holdIP2, 0);
+		}
+		if (brokenLines != 0)
+		{
+			System.out.println(
+					"This input had " + brokenLines + " invalid input lines. They were not added to the list");
+			System.out.println("Remember to use the format");
+			System.out.println("String - String");
 		}
 	}
 
@@ -182,10 +180,9 @@ public class Driver
 	 * @param stateGraph
 	 *            the graph
 	 */
-	public static void displayMainMenu(MapColoringGraph<States> stateGraph)
+	public static void displayMainMenu()
 	{
-		// TODO I dont think this need a parameter - but it doesnt really matter
-		// that much
+
 		System.out.println("\n\n*************************************************");
 		System.out.println("a. Display the graph");
 		System.out.println("b. Add an edge");
@@ -236,32 +233,25 @@ public class Driver
 	 */
 	public static void removeAnEdge(MapColoringGraph<States> stateGraph, Scanner scanner)
 	{
-		// TODO maybe add an option to quit? this can get you stuck on a graph
-		// with no connection. (unlikely.)
 		String s1, s2;
 		States state1, state2;
 		boolean remove = false;
+		System.out.println("Enter two states that you want to disconnect.");
+		System.out.println("State1: ");
+		s1 = scanner.nextLine();
+		System.out.println("State2: ");
+		s2 = scanner.nextLine();
 
-		do
+		state1 = new States(s1);
+		state2 = new States(s2);
+		remove = stateGraph.remove(state1, state2);
+		if (remove == false)
+			System.out.println("Remove fail.");
+		else
 		{
-			System.out.println("Enter two states that you want to disconnect.");
-			System.out.println("State1: ");
-			s1 = scanner.nextLine();
-			System.out.println("State2: ");
-			s2 = scanner.nextLine();
-
-			state1 = new States(s1);
-			state2 = new States(s2);
-			remove = stateGraph.remove(state1, state2);
-			if (remove == false)
-				System.out.println("Remove fail. Enter again.");
-			else
-			{
-				System.out.println();
-				stateGraph.showAdjTable();
-			}
-
-		} while (!remove);
+			System.out.println();
+			stateGraph.showAdjTable();
+		}
 
 	}
 
