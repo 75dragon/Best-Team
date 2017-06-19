@@ -3,9 +3,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.io.*;
 
+//wrote by Xiaoya Li except the readInputFile() method
+//bug fixed by Austin Cheng 
 public class Driver
 {
-
 	public static Scanner userScanner = new Scanner(System.in);
 
 	public static void main(String[] args)
@@ -124,6 +125,7 @@ public class Driver
 		return writer;
 	}
 
+	//wrote by Austin Cheng
 	/**
 	 * reads the input file into the graph. checks for errors along the way
 	 * 
@@ -176,9 +178,6 @@ public class Driver
 
 	/**
 	 * displays the menu
-	 * 
-	 * @param stateGraph
-	 *            the graph
 	 */
 	public static void displayMainMenu()
 	{
@@ -281,8 +280,10 @@ public class Driver
 	{
 		int number;
 
-		System.out.println("Enter the number of color you want to use: ");
-		number = scanner.nextInt();
+		do{
+			System.out.println("Enter the number of color you want to use: ");
+			number = scanner.nextInt();
+		}while(number <= 0);
 
 		String[] colorList = new String[number];
 		for (int i = 0; i < number; i++)
@@ -309,6 +310,11 @@ public class Driver
 		stateGraph.writeTextAdjList(writer);
 	}
 
+	/**
+	 * ask the user exit or not
+	 * @param scanner to read input
+	 * @return user's choice
+	 */
 	public static char exitOrRepeat(Scanner scanner)
 	{
 

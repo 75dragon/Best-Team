@@ -1,4 +1,4 @@
-
+//wrote by Xiaoya Li
 public class States {
 	private String name;
 	

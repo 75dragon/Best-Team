@@ -1,7 +1,7 @@
 import java.io.PrintWriter;
 import java.util.*;
 import java.util.Map.Entry;
-
+//designed by Xiaoya Li
 class ColorVertex<E> extends Vertex<E>
 {
 	private int color;
@@ -30,6 +30,7 @@ class ColorVertex<E> extends Vertex<E>
 
 	// check whether other vertices in curr's adjList is marked the same color
 	// or not
+	// wrote by Xiaoya Li
 	public boolean isSafeColor(int cr)
 	{
 		Iterator<Map.Entry<E, Pair<Vertex<E>, Double>>> iter = this.iterator();
@@ -42,6 +43,7 @@ class ColorVertex<E> extends Vertex<E>
 		return true;
 	}
 
+	// wrote by Xiaoya Li
 	@Override
 	public void showAdjList()
 	{
@@ -88,6 +90,7 @@ public class MapColoringGraph<E> extends Graph<E>
 		region = name;
 	}
 
+	// wrote by Xiaoya Li
 	@Override
 	public ColorVertex<E> addToVertexSet(E x)
 	{
@@ -110,6 +113,7 @@ public class MapColoringGraph<E> extends Graph<E>
 		return retVal; // should never happen
 	}
 
+	// wrote by Xiaoya Li
 	@Override
 	public void addEdge(E source, E dest, double cost)
 	{
@@ -126,6 +130,7 @@ public class MapColoringGraph<E> extends Graph<E>
 
 	}
 
+	// wrote by Xiaoya Li
 	@Override
 	public void addEdge(E source, E dest, int cost)
 	{
@@ -133,24 +138,17 @@ public class MapColoringGraph<E> extends Graph<E>
 		addEdge(source, dest, (double) cost);
 	}
 
+	// wrote by Collin Hurst, fixed by Xiaoya Li
 	public boolean undoRemove()
 	{
-		boolean removed = false;
+		boolean undo = false;
 		E endData = removedList.pop();
 		E startData = removedList.pop();
-		Vertex<E> endVertex = vertexSet.get(endData);
-		Vertex<E> startVertex = vertexSet.get(startData);
-		if (startVertex != null)
-		{
-			startVertex.addToAdjList(endVertex, 0);
-			removed = true;
+		if(endData != null && startData != null){
+			this.addEdge(startData, endData, 0.0);
+			undo = true;
 		}
-		if (endVertex != null)
-		{
-			endVertex.addToAdjList(startVertex, 0);
-			removed = true;
-		}
-		return removed;
+		return undo;
 	}
 
 	@Override
@@ -178,6 +176,7 @@ public class MapColoringGraph<E> extends Graph<E>
 		return removedOK;
 	}
 
+	// wrote by Xiaoya Li
 	public void assignColor(int numOfColor, String[] colorStr)
 	{
 		int numColored = 0;
@@ -191,6 +190,7 @@ public class MapColoringGraph<E> extends Graph<E>
 
 	}
 
+	// wrote by Xiaoya Li
 	private boolean assignHelper(int numOfColor, int numColored, Iterator<Map.Entry<E, Vertex<E>>> iter)
 	{
 		/* base case: If all vertices are assigned a color then return true */
@@ -230,6 +230,7 @@ public class MapColoringGraph<E> extends Graph<E>
 
 	}
 
+	// wrote by Xiaoya Li
 	public void displayColorResult(String[] colorStr)
 	{
 		System.out.println("Solution for " + region + " Exists: Following are the assigned colors");
@@ -245,6 +246,7 @@ public class MapColoringGraph<E> extends Graph<E>
 		System.out.println();
 	}
 
+	// wrote by Xiaoya Li
 	@Override
 	public void showAdjTable()
 	{
@@ -260,6 +262,7 @@ public class MapColoringGraph<E> extends Graph<E>
 		System.out.println();
 	}
 
+	// wrote by Collin Hurst
 	public void writeTextResult(PrintWriter writer, String[] colorList)
 	{
 		Iterator<Entry<E, Vertex<E>>> iter;
@@ -276,6 +279,7 @@ public class MapColoringGraph<E> extends Graph<E>
 		writer.close();
 	}
 
+	// wrote by Collin Hurst
 	public void writeTextAdjList(PrintWriter writer)
 	{
 		Iterator<Entry<E, Vertex<E>>> iter;
@@ -289,6 +293,7 @@ public class MapColoringGraph<E> extends Graph<E>
 		writer.close();
 	}
 
+	// wrote by Collin Hurst
 	public void printAdjList(Vertex<E> vertex, PrintWriter writer)
 	{
 		Iterator<Entry<E, Pair<Vertex<E>, Double>>> iter;
