@@ -47,7 +47,7 @@ public class Driver
 						break;
 
 					case 'd':
-						// undoRemove(stateGraph);
+						undoRemove(stateGraph);
 						break;
 
 					case 'e':
@@ -72,6 +72,11 @@ public class Driver
 		scanner.close();
 	}
 
+	/**
+	 * attempts to open an file the user enters
+	 * 
+	 * @return the scanner if successful
+	 */
 	public static Scanner openInputFile()
 	{
 		String filename;
@@ -93,6 +98,11 @@ public class Driver
 		return scanner;
 	}
 
+	/**
+	 * attempts to open a file to write on
+	 * 
+	 * @return a printwriter, if found
+	 */
 	public static PrintWriter openOutputFile()
 	{
 
@@ -116,8 +126,11 @@ public class Driver
 
 	/**
 	 * reads the input file into the graph. checks for errors along the way
-	 * @param scanner the scanner to read the file
-	 * @param stateGraph the graph
+	 * 
+	 * @param scanner
+	 *            the scanner to read the file
+	 * @param stateGraph
+	 *            the graph
 	 */
 	public static void readInputFile(Scanner scanner, MapColoringGraph<States> stateGraph)
 	{
@@ -143,15 +156,15 @@ public class Driver
 			{
 				System.out.println("Found value: " + m.group(1));
 				System.out.println("Found value: " + m.group(2));
-			}
-			else
+			} else
 			{
 				brokenLines++;
 			}
-			
-			if ( brokenLines != 0 )
+
+			if (brokenLines != 0)
 			{
-				System.out.println("This input had " + brokenLines + " invalid input lines. They were not added to the list");
+				System.out.println(
+						"This input had " + brokenLines + " invalid input lines. They were not added to the list");
 				System.out.println("Remember to use the format");
 				System.out.println("String - String");
 			}
@@ -165,11 +178,14 @@ public class Driver
 
 	/**
 	 * displays the menu
-	 * @param stateGraph the graph
+	 * 
+	 * @param stateGraph
+	 *            the graph
 	 */
 	public static void displayMainMenu(MapColoringGraph<States> stateGraph)
 	{
-		//TODO I dont think this need a parameter - but it doesnt really matter that much
+		// TODO I dont think this need a parameter - but it doesnt really matter
+		// that much
 		System.out.println("\n\n*************************************************");
 		System.out.println("a. Display the graph");
 		System.out.println("b. Add an edge");
@@ -185,8 +201,11 @@ public class Driver
 
 	/**
 	 * adds an edge from 2 states the user inputs
-	 * @param stateGraph the graph 
-	 * @param scanner the scanner to read input
+	 * 
+	 * @param stateGraph
+	 *            the graph
+	 * @param scanner
+	 *            the scanner to read input
 	 */
 	public static void addAnEdge(MapColoringGraph<States> stateGraph, Scanner scanner)
 	{
@@ -209,12 +228,16 @@ public class Driver
 
 	/**
 	 * removes an edge between 2 states the user inputs
-	 * @param stateGraph the graph
-	 * @param scanner the scanner to read input
+	 * 
+	 * @param stateGraph
+	 *            the graph
+	 * @param scanner
+	 *            the scanner to read input
 	 */
 	public static void removeAnEdge(MapColoringGraph<States> stateGraph, Scanner scanner)
 	{
-		//TODO maybe add an option to quit? this can get you stuck on a graph with no connection. (unlikely.)
+		// TODO maybe add an option to quit? this can get you stuck on a graph
+		// with no connection. (unlikely.)
 		String s1, s2;
 		States state1, state2;
 		boolean remove = false;
@@ -244,7 +267,9 @@ public class Driver
 
 	/**
 	 * undo's the last remove(). adds the connection back
-	 * @param stateGraph the graph
+	 * 
+	 * @param stateGraph
+	 *            the graph
 	 */
 	public static void undoRemove(MapColoringGraph<States> stateGraph)
 	{
@@ -257,6 +282,11 @@ public class Driver
 			System.out.println("\nUndo remove fail.");
 	}
 
+	/**
+	 * colors the graph. No 2 adjacent objects can be the same color.
+	 * @param stateGraph the graph
+	 * @param scanner to read input
+	 */
 	public static void colorGraph(MapColoringGraph<States> stateGraph, Scanner scanner)
 	{
 		int number;
@@ -273,13 +303,16 @@ public class Driver
 		stateGraph.assignColor(number, colorList);
 		System.out.println("Do you want to save the result? (y for yes): ");
 		if (Character.toLowerCase(scanner.next().charAt(0)) == 'y')
-			;
 		{
 			PrintWriter writer = openOutputFile();
 			stateGraph.writeTextResult(writer, colorList);
 		}
 	}
 
+	/**
+	 * saves the graph to a file
+	 * @param stateGraph the graph
+	 */
 	public static void saveGraph(MapColoringGraph<States> stateGraph)
 	{
 		PrintWriter writer = openOutputFile();
