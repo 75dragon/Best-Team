@@ -33,7 +33,7 @@ class ColorVertex<E> extends Vertex<E>{
 			return true;
 		}
 
-		@Override
+	@Override
 	  public void showAdjList()
 		   {
 		      Iterator<Entry<E, Pair<Vertex<E>, Double>>> iter ;
@@ -47,7 +47,7 @@ class ColorVertex<E> extends Vertex<E>{
 		      {
 		         entry = iter.next();
 		         pair = entry.getValue();
-		         System.out.print(" " +  pair.first.data );
+		         System.out.print(" " +  pair.first.data  + " | ");
 		      }
 		      System.out.println();
    }
@@ -62,12 +62,18 @@ public class MapColoringGraph<E> extends Graph<E> {
 	
 	public MapColoringGraph(String name){
 		super();
+		removedList = new LinkedStack<E>();
 		region = name;
 	}
 	
 	public MapColoringGraph(){
 		super();
+		removedList = new LinkedStack<E>();
 		region = "Unknown";
+	}
+	
+	public void setRegion(String name){
+		region = name;
 	}
 	
 	
@@ -196,6 +202,21 @@ public class MapColoringGraph<E> extends Graph<E> {
 		System.out.println();
 	}
 	
+	@Override
+	 public void showAdjTable()
+	   {
+	      Iterator<Entry<E, Vertex<E>>> iter;
+
+	      System.out.println( "------------------------ ");
+	      System.out.println(region);
+	      iter = vertexSet.entrySet().iterator();
+	      while( iter.hasNext() )
+	      {
+	         ((ColorVertex<E>)(iter.next().getValue())).showAdjList();
+	      }
+	      System.out.println();
+	   }
+	
 	
 	
 	public void writeTextResult(PrintWriter writer, String [] colorList) {
@@ -220,6 +241,7 @@ public class MapColoringGraph<E> extends Graph<E> {
 			printAdjList(iter.next().getValue(), writer);
 		}
 		writer.println();
+		writer.close();
 	}
 	
 	public void printAdjList( Vertex<E> vertex, PrintWriter writer) {
@@ -232,7 +254,7 @@ public class MapColoringGraph<E> extends Graph<E> {
 		while (iter.hasNext()) {
 			entry = iter.next();
 			pair = entry.getValue();
-			writer.print(pair.first.getData() + "(" + String.format("%3.1f", pair.second) + ") ");
+			writer.print(pair.first.getData() + " | ");
 		}
 		writer.println();
 	}

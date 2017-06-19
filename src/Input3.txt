@@ -1,0 +1,24 @@
+Canada Provinces Map
+Yukon - Northwest Territories
+Yukon - British Colunmbia 
+Northwest Territories - British Colunmbia
+Northwest Territories - Alberta
+Northwest Territories - Saskatchewan
+Northwest Territories - Nunavut
+Nunavut - Manitoba 
+Nunavut - Quebec
+Nunavut - Ontario
+British Colunmbia - Alberta
+Alberta - Saskatchewan 
+Saskatchewan - Manitoba 
+Manitoba - Ontario
+Ontario - Quebec
+Quebec - Newfoundland and Labrador
+Quebec - New Brunswick
+Quebec - Prince Edward Island
+Quebec - Nova Scotia
+Newfoundland and Labrador - Prince Edward Island
+Newfoundland and Labrador - Nova Scotia
+Prince Edward Island - New Brunswick
+Prince Edward Island - Nova Scotia
+New Brunswick - Nova Scotia

@@ -1,0 +1,52 @@
+Wyoming counties map
+Park County - Teton County
+Park County - Fremont County
+Park County - Hot Springs County
+Park County - Big Horn County
+Park County - Washakie County
+Teton County - Fremont County
+Teton County - Lincoln County
+Teton County - Sublette County
+Lincoln County - Sublette County
+Lincoln County - Sweetwater County
+Lincoln County - Uinta County
+Uinta County - Sweetwater County
+Big Horn County - Sheridan County
+Big Horn County - Johnson County
+Big Horn County - Washakie County
+Big Horn County - Hot Springs County
+Washakie County - Hot Springs County 
+Washakie County - Fremont County
+Washakie County - Natrona County
+Washakie County - Johnson County
+Hot Springs County - Fremont County
+Fremont County - Sublette County
+Fremont County - Sweetwater County
+Fremont County - Carbon County
+Fremont County - Natrona County 
+Sublette County - Sweetwater County
+Sweetwater County - Carbon County
+Sheridan County - Johnson County
+Sheridan County - Campbell County
+Johnson County - Natrona County 
+Johnson County - Campbell County
+Johnson County - Converse County
+Natrona County - Carbon County
+Natrona County - Converse County
+Carbon County - Albany County
+Campbell County - Converse County
+Campbell County - Crook County
+Campbell County - Weston County
+Converse County - Albany County
+Converse County - Platte County
+Converse County - Niobrara County
+Converse County - Weston County
+Albany County - Platte County
+Albany County - Laramie County
+Crook County - Weston County
+Weston County - Niobrara County
+Niobrara County - Platte County
+Niobrara County - Goshen County
+Platte County - Goshen County
+Platte County - Laramie County
+Goshen County - Laramie County

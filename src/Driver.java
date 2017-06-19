@@ -8,7 +8,7 @@ public class Driver {
 	public static Scanner userScanner = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		char exit = 'n';
+		char exit;
 		boolean repeat = false;
 		Scanner inputReader;
 		Scanner scanner = new Scanner(System.in);
@@ -19,11 +19,13 @@ public class Driver {
 				return;
 		
 			readInputFile(inputReader, stateGraph);
+			exit = 'n';
 			while(exit != 'y'){
 				
 				 displayMainMenu(stateGraph);
 				
 				 char userChoice= scanner.next().charAt(0);
+				 scanner.nextLine();
 			
 				switch(userChoice){
 				case'a':	
@@ -32,11 +34,11 @@ public class Driver {
 					break;
 					
 				case'b':
-					addAnEdge(stateGraph);
+					addAnEdge(stateGraph, scanner);
 					break;
 					
 				case'c':
-					removeAnEdge(stateGraph);
+					removeAnEdge(stateGraph, scanner);
 					break;
 					
 				case'd':
@@ -44,7 +46,7 @@ public class Driver {
 					break;
 					
 				case'e':
-					colorGraph(stateGraph);
+					colorGraph(stateGraph, scanner);
 					break;
 					
 				case'f':
@@ -52,13 +54,13 @@ public class Driver {
 					break;
 					
 				case'g':
-					exit = exitOrRepeat();
+					exit = exitOrRepeat(scanner);
 					break;
 				default: System.out.println("Invalid input. Please enter again.");	
 				}
 			}
 			System.out.println("Do you want to start an new graph? ('y' for yes)");
-			repeat = Character.toLowerCase(inputReader.next().charAt(0)) == 'y' ? true : false;
+			repeat = Character.toLowerCase(scanner.next().charAt(0)) == 'y' ? true : false;
 		}while(repeat);
 		inputReader.close();
 		scanner.close();
@@ -113,6 +115,7 @@ public class Driver {
 					return;
 				}
 				String name = scanner.nextLine().trim();
+				stateGraph.setRegion(name);
 				Pattern r = Pattern.compile(pattern);
 
 				while (scanner.hasNextLine())
@@ -149,28 +152,26 @@ public class Driver {
 		
 	}
 	
-	public static void addAnEdge(MapColoringGraph<States> stateGraph){
-		
-		Scanner scanner = new Scanner(System.in);
+	public static void addAnEdge(MapColoringGraph<States> stateGraph, Scanner scanner){
 		String s1, s2;
 		States state1, state2;
 		
 		System.out.println("Enter two states that you want to connect.");
 		System.out.println("State1: ");
-		s1 = scanner.next();
+		s1 = scanner.nextLine();
 		System.out.println("State2: ");
-		s2 = scanner.next();
+		s2 = scanner.nextLine();
 		
 		state1 = new States(s1);
 		state2 = new States(s2);
 		stateGraph.addEdge(state1, state2, 0);
 		System.out.println();
 		stateGraph.showAdjTable();
-		scanner.close();
+		
 	}
 
-	public static void removeAnEdge(MapColoringGraph<States> stateGraph){
-		Scanner scanner = new Scanner(System.in);
+	public static void removeAnEdge(MapColoringGraph<States> stateGraph, Scanner scanner){
+
 		String s1, s2;
 		States state1, state2;
 		boolean remove = false;
@@ -178,9 +179,9 @@ public class Driver {
 		do{
 			System.out.println("Enter two states that you want to disconnect.");
 			System.out.println("State1: ");
-			s1 = scanner.next();
+			s1 = scanner.nextLine();
 			System.out.println("State2: ");
-			s2 = scanner.next();
+			s2 = scanner.nextLine();
 			
 			state1 = new States(s1);
 			state2 = new States(s2);
@@ -193,7 +194,7 @@ public class Driver {
 			}
 				
 		}while(!remove);
-		scanner.close();
+
 	}
 	
 	/*
@@ -208,8 +209,7 @@ public class Driver {
 	}
 	*/
 	
-	public static void colorGraph(MapColoringGraph<States> stateGraph){
-		Scanner scanner = new Scanner(System.in);
+	public static void colorGraph(MapColoringGraph<States> stateGraph, Scanner scanner){
 		int number;
 
 		System.out.println("Enter the number of color you want to use: ");
@@ -226,8 +226,6 @@ public class Driver {
 			PrintWriter writer = openOutputFile();
 			stateGraph.writeTextResult(writer, colorList);
 		}
-
-		scanner.close();
 	}
 	
 	public static void saveGraph(MapColoringGraph<States> stateGraph){
@@ -235,11 +233,11 @@ public class Driver {
 		stateGraph.writeTextAdjList(writer);
 	}
 	
-	public static char exitOrRepeat(){
-		Scanner scanner = new Scanner(System.in);
+	public static char exitOrRepeat(Scanner scanner){
+		
 		System.out.println("Do you want to exit the program? (¡®y¡¯ for exit)");
 		char choice = scanner.next().charAt(0);
-		scanner.close();
+		
 		return Character.toLowerCase(choice);
 	}
 	
