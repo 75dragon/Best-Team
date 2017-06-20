@@ -22,7 +22,7 @@ Illinois - Kentucky
 Illinois - Missouri
 Mississippi - Louisiana
 Mississippi - Tennessee
-Mississippo - Alabama
+Mississippi - Alabama
 Tennessee - Arkansaw Territory
 Tennessee - Missouri
 Tennessee - Kentucky
@@ -30,6 +30,6 @@ Tennessee - Alabama
 Tennessee - Mississippi
 Kentucky - Missouri
 Kentucky - Illinois
-Kentucky - Tennesse
-Alabama - Mississuppi
+Kentucky - Tennessee
+Alabama - Mississippi
 Alabama - Tennessee

@@ -208,6 +208,11 @@ public class Graph<E>
 	   depthFirstTraversalHelper( startVertex, visitor );
    }
 
+   /**
+    * this code takes a point and goes through them in order of height
+    * @param startVertex the start
+    * @param visitor to help print / track
+    */
    protected void breadthFirstTraversalHelper(Vertex<E> startVertex,
 		   Visitor<E> visitor)
    {
@@ -237,9 +242,31 @@ public class Graph<E>
 	   }
    } // end breadthFirstTraversalHelper
 
+   /**
+    * Dammit guys now I have to do something. I dont like doing something :(
+    * Traverses the list, going as far as possible before backtracking
+    * @param startVertex the start
+    * @param visitor the help print / track
+    */
    public void depthFirstTraversalHelper(Vertex<E> startVertex, Visitor<E> visitor)
    {
         // YOU COMPLETE THIS (USE THE RECURSIVE ALGORITHM GIVEN FOR LESSON 11 EXERCISE)
+	   startVertex.visit();
+	   E theData = startVertex.getData();
+	   visitor.visit(theData);
+	   
+	   Iterator<Map.Entry<E, Pair<Vertex<E>, Double>>> iter =
+			   startVertex.iterator(); // iterate adjacency list
+
+	   while( iter.hasNext() )
+	   {
+		   Entry<E, Pair<Vertex<E>, Double>> nextEntry = iter.next();
+		   Vertex<E> neighborVertex = nextEntry.getValue().first;
+		   if( !neighborVertex.isVisited() )
+		   {
+			   depthFirstTraversalHelper(neighborVertex, visitor);
+		   }
+	   }
    }
 
 
@@ -248,5 +275,5 @@ public class Graph<E>
    //         adjacency list TO A TEXT FILE (SUGGEST TO PASS AN
    //        ALREADY OPEN PrintWriter TO THIS) !
 
-
+//TODO we wrote this somewhere elsE?
 }
