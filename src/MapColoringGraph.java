@@ -2,6 +2,7 @@ import java.io.PrintWriter;
 import java.util.*;
 import java.util.Map.Entry;
 //designed by Xiaoya Li
+//test by collin 
 class ColorVertex<E> extends Vertex<E>
 {
 	private int color;
