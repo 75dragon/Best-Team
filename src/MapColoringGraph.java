@@ -242,17 +242,31 @@ public class MapColoringGraph<E> extends Graph<E>
 	// wrote by Xiaoya Li
 	public void displayColorResult(String[] colorStr)
 	{
-		System.out.println("Solution for " + region + " Exists: Following are the assigned colors");
+		System.out.println("Solution for " + region + " Exists: ");
+		
 		Iterator<Entry<E, Vertex<E>>> iter;
 		iter = vertexSet.entrySet().iterator();
-
+		Iterator<Entry<E, Pair<Vertex<E>, Double>>> vertexIter;
+		Entry<E, Pair<Vertex<E>, Double>> entry;
+		Pair<Vertex<E>, Double> pair;
+		
 		while (iter.hasNext())
 		{
 			ColorVertex<E> cv = (ColorVertex<E>) iter.next().getValue();
-			System.out.print(cv.getData() + " is: " + colorStr[cv.getColor()]);
+			System.out.print(cv.getData() + " (" + colorStr[cv.getColor()] + ") ->");
+			
+			vertexIter = cv.adjList.entrySet().iterator();
+			while (vertexIter.hasNext())
+			{
+				entry = vertexIter.next();
+				pair = entry.getValue();
+				ColorVertex<E> curr = (ColorVertex<E>)pair.first;
+				System.out.print(" " + curr.data + " (" +colorStr[curr.getColor()] +")"+ " | ");
+			}
 			System.out.println();
 		}
 		System.out.println();
+		
 	}
 
 	// wrote by Xiaoya Li
