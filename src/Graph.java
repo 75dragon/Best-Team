@@ -9,7 +9,6 @@ interface Visitor<T>
 // --- assumes definition of simple class Pair<E, F>
 
 // --- Vertex class ------------------------------------------------------
-//TODO - I dont really understand this, so id prefer if you commented it -AC
 /**
  * Vertex 
  * @author Austin Cheng
@@ -284,5 +283,5 @@ public class Graph<E>
    //         adjacency list TO A TEXT FILE (SUGGEST TO PASS AN
    //        ALREADY OPEN PrintWriter TO THIS) !
 
-//TODO we wrote this somewhere elsE?
+// we wrote this in our MapColoringGraph?
 }
