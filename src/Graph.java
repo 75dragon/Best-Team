@@ -9,6 +9,15 @@ interface Visitor<T>
 // --- assumes definition of simple class Pair<E, F>
 
 // --- Vertex class ------------------------------------------------------
+//TODO - I dont really understand this, so id prefer if you commented it -AC
+/**
+ * Vertex 
+ * @author Austin Cheng
+ * @author Xiaoya Li
+ * @author Collin Hurst
+ *
+ * @param <E>
+ */
 class Vertex<E>
 {
    public static final double INFINITY = Double.MAX_VALUE;

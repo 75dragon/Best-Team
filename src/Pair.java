@@ -1,6 +1,10 @@
-
-
-//--- a simple pair data structure, (first, second), that uses first as a key
+/**
+ * a simple pair data structure, (first, second), that uses first as a key
+ * @author Xiaoya Li
+ * @author Austin Cheng
+ * @author Collin Hurst
+ * Windows 10 Eclipse
+ */
 public class Pair<E, F>
 {
    public E first;

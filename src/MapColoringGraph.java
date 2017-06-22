@@ -3,6 +3,13 @@ import java.util.*;
 import java.util.Map.Entry;
 //designed by Xiaoya Li
 //test by collin 
+/**
+ * A class that colors the map, making sure that no two adjacent city are the same color.
+ * @author Xiaoya Li
+ * @author Austin Cheng
+ * @author Collin Hurst
+ * Windows 10 Eclipse
+ */
 class ColorVertex<E> extends Vertex<E>
 {
 	private int color;

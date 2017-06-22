@@ -5,6 +5,13 @@ import java.util.Map.Entry;
 //--- Edge class ------------------------------------------------------
 // THIS CLASS DOESN'T ALLOW OUTSIDE ACCESS TO ANY Vertex (ONLY TO DISPLAY OR COMPARE)
 // REMEMBER, it's a REQUIREMENT for NO OUTSIDE ACCESS TO a Vertex!!!
+/**
+ * TODO comments
+ * @author Xiaoya Li
+ * @author Austin Cheng
+ * @author Collin Hurst
+ * Windows 10 Eclipse
+ */
 class Edge<E> implements Comparable< Edge<E> >
 {
 	 Vertex<E> source, dest;

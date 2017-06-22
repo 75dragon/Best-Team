@@ -1,4 +1,12 @@
-//wrote by Xiaoya Li
+/**
+ * wrote by Xiaoya Li
+ * a state class - as simple as you can get, really.
+ * has a string to represent the name, thats basically it.
+ * @author Xiaoya Li
+ * @author Austin Cheng
+ * @author Collin Hurst
+ * Windows 10 Eclipse
+ */
 public class States {
 	private String name;
 	
@@ -19,6 +27,7 @@ public class States {
 		return name;
 	}
 	
+	//compares the name
 	@Override 
 	public boolean equals(Object x){
 		if(x instanceof States){
@@ -28,6 +37,7 @@ public class States {
 			return false;
 	}
 	
+	//returns a hashcode for the name
 	@Override
 	public int hashCode(){
 		return name.hashCode();
