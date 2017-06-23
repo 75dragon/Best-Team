@@ -4,21 +4,22 @@ import java.util.regex.Pattern;
 import java.io.*;
 
 /**
- * wrote by Xiaoya Li except the readInputFile() method
- * bug fixed by Austin Cheng. I hate bugfixing :) why is that my job D:
- * 99% of all comments also done by supreme dictator Austin Cheng :)
- * A driver class. User runs this, which then displays the options in the file.
+ * wrote by Xiaoya Li except the readInputFile() method bug fixed by Austin
+ * Cheng. I hate bugfixing :) why is that my job D: 99% of all comments also
+ * done by supreme dictator Austin Cheng :) A driver class. User runs this,
+ * which then displays the options in the file.
+ * 
  * @author Xiaoya Li
  * @author Austin Cheng
- * @author Collin Hurst
- * Windows 10 Eclipse
+ * @author Collin Hurst Windows 10 Eclipse
  */
 public class Driver
 {
 	public static Scanner userScanner = new Scanner(System.in);
 
 	/**
-	 * Initializes and prompts the user to select a variety of choices. 
+	 * Initializes and prompts the user to select a variety of choices.
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args)
@@ -31,16 +32,17 @@ public class Driver
 		{
 			MapColoringGraph<States> stateGraph = new MapColoringGraph<>();
 			inputReader = openInputFile();
-			if (inputReader == null)//if the inputReader fails to get something, exit
+			if (inputReader == null)// if the inputReader fails to get
+									// something, exit
 				return;
 
 			States lastElem = readInputFile(inputReader, stateGraph);
-			if (lastElem == null)//if there is nothing in the file, exit
+			if (lastElem == null)// if there is nothing in the file, exit
 			{
 				return;
 			}
 			exit = 'n';
-			while (exit != 'y')//while the user does not want to exit
+			while (exit != 'y')// while the user does not want to exit
 			{
 
 				displayMainMenu();
@@ -50,39 +52,40 @@ public class Driver
 
 				switch (userChoice)
 				{
-					case 'a': //to display the graph
+					case 'a': // to display the graph
 						System.out.println();
 						displayGraph(scanner, stateGraph, lastElem);
 						break;
 
-					case 'b': //to add an edge
+					case 'b': // to add an edge
 						addAnEdge(stateGraph, scanner);
 						break;
 
-					case 'c': //to remove an edge
+					case 'c': // to remove an edge
 						removeAnEdge(stateGraph, scanner);
 						break;
 
-					case 'd': //to undo the remove an edge
+					case 'd': // to undo the remove an edge
 						undoRemove(stateGraph);
 						break;
 
-					case 'e': //colors the graph with user inputed colors
+					case 'e': // colors the graph with user inputed colors
 						colorGraph(stateGraph, scanner);
 						break;
 
-					case 'f': //saves the graph to a file
+					case 'f': // saves the graph to a file
 						saveGraph(stateGraph);
 						break;
 
-					case 'g': //to exit the program
+					case 'g': // to exit the program
 						exit = exitOrRepeat(scanner);
 						break;
 					default:
 						System.out.println("Invalid input. Please enter again.");
 				}
 			}
-			//right before exiting, ask the user if they want to input another graph
+			// right before exiting, ask the user if they want to input another
+			// graph
 			System.out.println("Do you want to start an new graph? ('y' for yes)");
 			repeat = Character.toLowerCase(scanner.next().charAt(0)) == 'y' ? true : false;
 		} while (repeat);
@@ -142,7 +145,7 @@ public class Driver
 		return writer;
 	}
 
-	//wrote by Austin Cheng
+	// wrote by Austin Cheng
 	/**
 	 * reads the input file into the graph. checks for errors along the way
 	 * 
@@ -179,16 +182,15 @@ public class Driver
 				holdIP1 = new States(m.group(1));
 				holdIP2 = new States(m.group(2));
 				stateGraph.addEdge(holdIP1, holdIP2, 0);
-			} 
-			else
+			} else
 			{
 				brokenLines++;
 			}
 		}
 		if (brokenLines != 0)
 		{
-			System.out.println(
-					"This input had " + brokenLines + " invalid input lines. They were not added to the list");
+			System.out
+					.println("This input had " + brokenLines + " invalid input lines. They were not added to the list");
 			System.out.println("Remember to use the format");
 			System.out.println("String - String");
 		}
@@ -213,15 +215,20 @@ public class Driver
 		System.out.println("Please enter a letter for your choice: ");
 
 	}
-	
+
 	/**
 	 * Ask user which way to display the graph and display it.
-	 * @param scanner to read input
-	 * @param stateGraph -  the graph
-	 * @param startElem - the element to start the traversal
+	 * 
+	 * @param scanner
+	 *            to read input
+	 * @param stateGraph
+	 *            - the graph
+	 * @param startElem
+	 *            - the element to start the traversal
 	 */
 
-	public static void displayGraph(Scanner scanner, MapColoringGraph<States> stateGraph, States startElem){
+	public static void displayGraph(Scanner scanner, MapColoringGraph<States> stateGraph, States startElem)
+	{
 		int choice;
 		boolean repeat;
 		StatesVisitor visitor = new StatesVisitor();
@@ -230,24 +237,27 @@ public class Driver
 		System.out.println("2. Breadth-First traversal");
 		System.out.println("3. Show adjacency list of each vertex");
 		choice = scanner.nextInt();
-		do{
+		do
+		{
 			repeat = false;
-			switch(choice){
-			case 1:
-				stateGraph.depthFirstTraversal(startElem, visitor);
-				break;
-			case 2: 
-				stateGraph.breadthFirstTraversal(startElem, visitor);
-				break;
-			case 3:
-				stateGraph.showAdjTable();
-				break;
-			default:
-				System.out.println("Invalid input. Please enter again.");
-				repeat = true;
+			switch (choice)
+			{
+				case 1:
+					stateGraph.depthFirstTraversal(startElem, visitor);
+					break;
+				case 2:
+					stateGraph.breadthFirstTraversal(startElem, visitor);
+					break;
+				case 3:
+					stateGraph.showAdjTable();
+					break;
+				default:
+					System.out.println("Invalid input. Please enter again.");
+					repeat = true;
 			}
-		}while(repeat);
+		} while (repeat);
 	}
+
 	/**
 	 * adds an edge from 2 states the user inputs
 	 * 
@@ -326,29 +336,48 @@ public class Driver
 
 	/**
 	 * colors the graph. No 2 adjacent objects can be the same color.
-	 * @param stateGraph the graph
-	 * @param scanner to read input
+	 * 
+	 * @param stateGraph
+	 *            the graph
+	 * @param scanner
+	 *            to read input
 	 */
 	public static void colorGraph(MapColoringGraph<States> stateGraph, Scanner scanner)
 	{
 		int number;
+		boolean hasColor;
 		boolean success;
-		do{
+		do
+		{
 			System.out.println("Enter the number of color you want to use: ");
-			while(!scanner.hasNextInt()) {
-			    scanner.next();
+			while (!scanner.hasNextInt())
+			{
+				scanner.next();
 			}
 			number = scanner.nextInt();
-		}while(number <= 0);
+		} while (number <= 0);
 
 		String[] colorList = new String[number];
 		for (int i = 0; i < number; i++)
 		{
 			System.out.println("Color" + (i + 1) + " : ");
-			colorList[i] = scanner.next();
+			do
+			{
+				colorList[i] = scanner.next();
+				hasColor = false;
+				for (int j = 0; j < i; j++)
+				{
+					if (colorList[j].toLowerCase().equals(colorList[i].toLowerCase()))
+					{
+						hasColor = true;
+						System.out.println("enter a different color.");
+					}
+				}
+			} while (hasColor);
 		}
 		success = stateGraph.assignColor(number, colorList);
-		if(success){
+		if (success)
+		{
 			System.out.println("Do you want to save the result? (y for yes): ");
 			if (Character.toLowerCase(scanner.next().charAt(0)) == 'y')
 			{
@@ -360,7 +389,9 @@ public class Driver
 
 	/**
 	 * saves the graph to a file
-	 * @param stateGraph the graph
+	 * 
+	 * @param stateGraph
+	 *            the graph
 	 */
 	public static void saveGraph(MapColoringGraph<States> stateGraph)
 	{
@@ -370,7 +401,9 @@ public class Driver
 
 	/**
 	 * ask the user exit or not
-	 * @param scanner to read input
+	 * 
+	 * @param scanner
+	 *            to read input
 	 * @return user's choice
 	 */
 	public static char exitOrRepeat(Scanner scanner)
